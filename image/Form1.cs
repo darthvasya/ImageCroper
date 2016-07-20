@@ -18,14 +18,20 @@ namespace image
         {
             InitializeComponent();
         }
-
+        // - сразу грузишь просто картинку
+        // - потом уже миниатюру
         Image file;
         Image cropFile;
         //Bitmap bmp;
-        MemoryStream ms = new MemoryStream();
+        MemoryStream ms;
         ImageService.ImageServiceClient client = new ImageService.ImageServiceClient();
         //ImgService.ImageServiceClient client = new ImgService.ImageServiceClient();
 
+        int id_user = 4;
+        string access_token = "c48VT0UCvUmfJL3VkXHB4A==";
+        string image_url = null;
+        int image_id = 0;
+        string user_urlid = "darthvasya";
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -60,14 +66,17 @@ namespace image
 
         private void button3_Click(object sender, EventArgs e)
         {
+            ms = new MemoryStream();
             file.Save(ms, ImageFormat.Jpeg); // сохраняем в поток памяти, типо в оперативу фотку ложим, в байтах.
             //bmp.Save(ms, ImageFormat.Jpeg);
             byte[] arr = ms.ToArray(); // - это массив байтов. В байтах можно что угодно передовать.
             // c48VT0UCvUmfJL3VkXHB4A - токен доступа для id = 4
             // NameOfFile - сюда изначальное имя файла. Хотя на серве имя генериться другое
             // стоит ли в базу писать изначальное имя фотки ??
-
-            MessageBox.Show(client.UploadImage(arr, "NameOfFile", 4, "c48VT0UCvUmfJL3VkXHB4A==").ToString());
+            ImageService.ImageClass response = client.UploadImage(arr, "NameOfFile", id_user, access_token);
+            image_url = response.image_url;
+            image_id = response.image_id;
+            MessageBox.Show("url: " + response.image_url + " id: " + response.image_id + " Exception: " + response.exception) ;
         }
 
         private bool _selecting;
@@ -113,8 +122,13 @@ namespace image
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            pictureBox1.Image = Crop(pictureBox1.Image, _selection);
-            cropFile = pictureBox1.Image;
+            cropFile = Crop(pictureBox1.Image, _selection);
+            pictureBox1.Image = cropFile;
+            ms = new MemoryStream();
+            cropFile.Save(ms, ImageFormat.Jpeg);
+            byte[] arr = ms.ToArray();
+            ImageService.ImageClass response = client.UploadMiniature(arr, image_id, user_urlid, id_user, access_token);
+            MessageBox.Show("Exception: " + response.exception);            
             //действия с cropFile по пересылке на серв
             //можно локально сохранять все фотки пользователя, его авы.
             //что бы не грузить лишний раз. Когда удалит - удаляем с телефона.

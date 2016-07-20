@@ -9,23 +9,102 @@
 //------------------------------------------------------------------------------
 
 namespace image.ImageService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ImageClass", Namespace="http://schemas.datacontract.org/2004/07/Network.Images")]
+    [System.SerializableAttribute()]
+    public partial class ImageClass : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string exceptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int image_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string image_urlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string exception {
+            get {
+                return this.exceptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.exceptionField, value) != true)) {
+                    this.exceptionField = value;
+                    this.RaisePropertyChanged("exception");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int image_id {
+            get {
+                return this.image_idField;
+            }
+            set {
+                if ((this.image_idField.Equals(value) != true)) {
+                    this.image_idField = value;
+                    this.RaisePropertyChanged("image_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string image_url {
+            get {
+                return this.image_urlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.image_urlField, value) != true)) {
+                    this.image_urlField = value;
+                    this.RaisePropertyChanged("image_url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ImageService.IImageService")]
     public interface IImageService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/DoWork", ReplyAction="http://tempuri.org/IImageService/DoWorkResponse")]
-        void DoWork();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/DoWork", ReplyAction="http://tempuri.org/IImageService/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/UploadImage", ReplyAction="http://tempuri.org/IImageService/UploadImageResponse")]
+        image.ImageService.ImageClass UploadImage(byte[] buffer, string name, int id_user, string access_token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/UploadImage", ReplyAction="http://tempuri.org/IImageService/UploadImageResponse")]
-        bool UploadImage(byte[] buffer, string name, int id_user, string access_token);
+        System.Threading.Tasks.Task<image.ImageService.ImageClass> UploadImageAsync(byte[] buffer, string name, int id_user, string access_token);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/UploadImage", ReplyAction="http://tempuri.org/IImageService/UploadImageResponse")]
-        System.Threading.Tasks.Task<bool> UploadImageAsync(byte[] buffer, string name, int id_user, string access_token);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/UploadMiniature", ReplyAction="http://tempuri.org/IImageService/UploadMiniatureResponse")]
+        image.ImageService.ImageClass UploadMiniature(byte[] buffer, int id_image, string urlid, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/UploadMiniature", ReplyAction="http://tempuri.org/IImageService/UploadMiniatureResponse")]
+        System.Threading.Tasks.Task<image.ImageService.ImageClass> UploadMiniatureAsync(byte[] buffer, int id_image, string urlid, int id_user, string access_token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,20 +134,20 @@ namespace image.ImageService {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
-        }
-        
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
-        }
-        
-        public bool UploadImage(byte[] buffer, string name, int id_user, string access_token) {
+        public image.ImageService.ImageClass UploadImage(byte[] buffer, string name, int id_user, string access_token) {
             return base.Channel.UploadImage(buffer, name, id_user, access_token);
         }
         
-        public System.Threading.Tasks.Task<bool> UploadImageAsync(byte[] buffer, string name, int id_user, string access_token) {
+        public System.Threading.Tasks.Task<image.ImageService.ImageClass> UploadImageAsync(byte[] buffer, string name, int id_user, string access_token) {
             return base.Channel.UploadImageAsync(buffer, name, id_user, access_token);
+        }
+        
+        public image.ImageService.ImageClass UploadMiniature(byte[] buffer, int id_image, string urlid, int id_user, string access_token) {
+            return base.Channel.UploadMiniature(buffer, id_image, urlid, id_user, access_token);
+        }
+        
+        public System.Threading.Tasks.Task<image.ImageService.ImageClass> UploadMiniatureAsync(byte[] buffer, int id_image, string urlid, int id_user, string access_token) {
+            return base.Channel.UploadMiniatureAsync(buffer, id_image, urlid, id_user, access_token);
         }
     }
 }
