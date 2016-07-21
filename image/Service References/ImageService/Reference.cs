@@ -90,6 +90,179 @@ namespace image.ImageService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/Network")]
+    [System.SerializableAttribute()]
+    public partial class Picture : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string current_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> date_deleteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime date_uploadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool deletedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> have_miniatureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int id_ownerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string start_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string urlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string current_name {
+            get {
+                return this.current_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.current_nameField, value) != true)) {
+                    this.current_nameField = value;
+                    this.RaisePropertyChanged("current_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> date_delete {
+            get {
+                return this.date_deleteField;
+            }
+            set {
+                if ((this.date_deleteField.Equals(value) != true)) {
+                    this.date_deleteField = value;
+                    this.RaisePropertyChanged("date_delete");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime date_upload {
+            get {
+                return this.date_uploadField;
+            }
+            set {
+                if ((this.date_uploadField.Equals(value) != true)) {
+                    this.date_uploadField = value;
+                    this.RaisePropertyChanged("date_upload");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool deleted {
+            get {
+                return this.deletedField;
+            }
+            set {
+                if ((this.deletedField.Equals(value) != true)) {
+                    this.deletedField = value;
+                    this.RaisePropertyChanged("deleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> have_miniature {
+            get {
+                return this.have_miniatureField;
+            }
+            set {
+                if ((this.have_miniatureField.Equals(value) != true)) {
+                    this.have_miniatureField = value;
+                    this.RaisePropertyChanged("have_miniature");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id_owner {
+            get {
+                return this.id_ownerField;
+            }
+            set {
+                if ((this.id_ownerField.Equals(value) != true)) {
+                    this.id_ownerField = value;
+                    this.RaisePropertyChanged("id_owner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string start_name {
+            get {
+                return this.start_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.start_nameField, value) != true)) {
+                    this.start_nameField = value;
+                    this.RaisePropertyChanged("start_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string url {
+            get {
+                return this.urlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.urlField, value) != true)) {
+                    this.urlField = value;
+                    this.RaisePropertyChanged("url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ImageService.IImageService")]
     public interface IImageService {
@@ -105,6 +278,30 @@ namespace image.ImageService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/UploadMiniature", ReplyAction="http://tempuri.org/IImageService/UploadMiniatureResponse")]
         System.Threading.Tasks.Task<image.ImageService.ImageClass> UploadMiniatureAsync(byte[] buffer, int id_image, string urlid, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/UploadAvatar", ReplyAction="http://tempuri.org/IImageService/UploadAvatarResponse")]
+        image.ImageService.ImageClass UploadAvatar(byte[] buffer, string name, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/UploadAvatar", ReplyAction="http://tempuri.org/IImageService/UploadAvatarResponse")]
+        System.Threading.Tasks.Task<image.ImageService.ImageClass> UploadAvatarAsync(byte[] buffer, string name, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/GetImageUrlById", ReplyAction="http://tempuri.org/IImageService/GetImageUrlByIdResponse")]
+        string GetImageUrlById(int id_image);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/GetImageUrlById", ReplyAction="http://tempuri.org/IImageService/GetImageUrlByIdResponse")]
+        System.Threading.Tasks.Task<string> GetImageUrlByIdAsync(int id_image);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/GetImageById", ReplyAction="http://tempuri.org/IImageService/GetImageByIdResponse")]
+        image.ImageService.Picture GetImageById(int id_image);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/GetImageById", ReplyAction="http://tempuri.org/IImageService/GetImageByIdResponse")]
+        System.Threading.Tasks.Task<image.ImageService.Picture> GetImageByIdAsync(int id_image);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/DeleteImage", ReplyAction="http://tempuri.org/IImageService/DeleteImageResponse")]
+        bool DeleteImage(int id_image, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/DeleteImage", ReplyAction="http://tempuri.org/IImageService/DeleteImageResponse")]
+        System.Threading.Tasks.Task<bool> DeleteImageAsync(int id_image, int id_user, string access_token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -148,6 +345,38 @@ namespace image.ImageService {
         
         public System.Threading.Tasks.Task<image.ImageService.ImageClass> UploadMiniatureAsync(byte[] buffer, int id_image, string urlid, int id_user, string access_token) {
             return base.Channel.UploadMiniatureAsync(buffer, id_image, urlid, id_user, access_token);
+        }
+        
+        public image.ImageService.ImageClass UploadAvatar(byte[] buffer, string name, int id_user, string access_token) {
+            return base.Channel.UploadAvatar(buffer, name, id_user, access_token);
+        }
+        
+        public System.Threading.Tasks.Task<image.ImageService.ImageClass> UploadAvatarAsync(byte[] buffer, string name, int id_user, string access_token) {
+            return base.Channel.UploadAvatarAsync(buffer, name, id_user, access_token);
+        }
+        
+        public string GetImageUrlById(int id_image) {
+            return base.Channel.GetImageUrlById(id_image);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetImageUrlByIdAsync(int id_image) {
+            return base.Channel.GetImageUrlByIdAsync(id_image);
+        }
+        
+        public image.ImageService.Picture GetImageById(int id_image) {
+            return base.Channel.GetImageById(id_image);
+        }
+        
+        public System.Threading.Tasks.Task<image.ImageService.Picture> GetImageByIdAsync(int id_image) {
+            return base.Channel.GetImageByIdAsync(id_image);
+        }
+        
+        public bool DeleteImage(int id_image, int id_user, string access_token) {
+            return base.Channel.DeleteImage(id_image, id_user, access_token);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteImageAsync(int id_image, int id_user, string access_token) {
+            return base.Channel.DeleteImageAsync(id_image, id_user, access_token);
         }
     }
 }

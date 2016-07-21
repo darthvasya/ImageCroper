@@ -91,6 +91,9 @@
     <None Include="Service References\ImageService\image.ImageService.ImageClass.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ImageService\image.ImageService.Picture.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ImageService\ImageService.wsdl" />
     <None Include="Service References\ImageService\ImageService.xsd">
       <SubType>Designer</SubType>
@@ -99,6 +102,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ImageService\ImageService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ImageService\ImageService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ImgService\ImageService.wsdl" />

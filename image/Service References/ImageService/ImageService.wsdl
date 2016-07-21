@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:58168/Images/ImageService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:58168/Images/ImageService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:58168/Images/ImageService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Network.Images" />
+      <xsd:import schemaLocation="http://localhost:58168/Images/ImageService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Network" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IImageService_UploadImage_InputMessage">
@@ -19,6 +20,30 @@
   <wsdl:message name="IImageService_UploadMiniature_OutputMessage">
     <wsdl:part name="parameters" element="tns:UploadMiniatureResponse" />
   </wsdl:message>
+  <wsdl:message name="IImageService_UploadAvatar_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadAvatar" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_UploadAvatar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadAvatarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_GetImageUrlById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageUrlById" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_GetImageUrlById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageUrlByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_GetImageById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageById" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_GetImageById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_DeleteImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteImage" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_DeleteImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteImageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IImageService">
     <wsdl:operation name="UploadImage">
       <wsdl:input wsaw:Action="http://tempuri.org/IImageService/UploadImage" message="tns:IImageService_UploadImage_InputMessage" />
@@ -27,6 +52,22 @@
     <wsdl:operation name="UploadMiniature">
       <wsdl:input wsaw:Action="http://tempuri.org/IImageService/UploadMiniature" message="tns:IImageService_UploadMiniature_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IImageService/UploadMiniatureResponse" message="tns:IImageService_UploadMiniature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IImageService/UploadAvatar" message="tns:IImageService_UploadAvatar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IImageService/UploadAvatarResponse" message="tns:IImageService_UploadAvatar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageUrlById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IImageService/GetImageUrlById" message="tns:IImageService_GetImageUrlById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IImageService/GetImageUrlByIdResponse" message="tns:IImageService_GetImageUrlById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IImageService/GetImageById" message="tns:IImageService_GetImageById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IImageService/GetImageByIdResponse" message="tns:IImageService_GetImageById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IImageService/DeleteImage" message="tns:IImageService_DeleteImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IImageService/DeleteImageResponse" message="tns:IImageService_DeleteImage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IImageService" type="tns:IImageService">
@@ -42,6 +83,42 @@
     </wsdl:operation>
     <wsdl:operation name="UploadMiniature">
       <soap:operation soapAction="http://tempuri.org/IImageService/UploadMiniature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAvatar">
+      <soap:operation soapAction="http://tempuri.org/IImageService/UploadAvatar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageUrlById">
+      <soap:operation soapAction="http://tempuri.org/IImageService/GetImageUrlById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageById">
+      <soap:operation soapAction="http://tempuri.org/IImageService/GetImageById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteImage">
+      <soap:operation soapAction="http://tempuri.org/IImageService/DeleteImage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

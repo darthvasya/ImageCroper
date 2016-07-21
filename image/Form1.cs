@@ -17,6 +17,7 @@ namespace image
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show(client.GetImageUrlById(3));
         }
         // - сразу грузишь просто картинку
         // - потом уже миниатюру
@@ -73,7 +74,8 @@ namespace image
             // c48VT0UCvUmfJL3VkXHB4A - токен доступа для id = 4
             // NameOfFile - сюда изначальное имя файла. Хотя на серве имя генериться другое
             // стоит ли в базу писать изначальное имя фотки ??
-            ImageService.ImageClass response = client.UploadImage(arr, "NameOfFile", id_user, access_token);
+            ImageService.ImageClass response = client.UploadAvatar(arr, "NameOfFile", id_user, access_token);
+            
             image_url = response.image_url;
             image_id = response.image_id;
             MessageBox.Show("url: " + response.image_url + " id: " + response.image_id + " Exception: " + response.exception) ;
@@ -150,6 +152,13 @@ namespace image
             image.Dispose();
 
             return cropBmp;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int id_image = Convert.ToInt32(textBox1.Text);
+            bool isDeleted = client.DeleteImage(id_image, id_user, access_token);
+            MessageBox.Show(isDeleted.ToString());
         }
     }
 }

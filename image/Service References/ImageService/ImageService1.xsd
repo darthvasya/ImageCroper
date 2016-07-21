@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:58168/Images/ImageService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Network.Images" />
+  <xs:import schemaLocation="http://localhost:58168/Images/ImageService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Network" />
   <xs:element name="UploadImage">
     <xs:complexType>
       <xs:sequence>
@@ -33,6 +34,67 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Network.Images" minOccurs="0" name="UploadMiniatureResult" nillable="true" type="q2:ImageClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadAvatar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id_user" type="xs:int" />
+        <xs:element minOccurs="0" name="access_token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadAvatarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Network.Images" minOccurs="0" name="UploadAvatarResult" nillable="true" type="q3:ImageClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageUrlById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_image" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageUrlByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetImageUrlByIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_image" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Network" minOccurs="0" name="GetImageByIdResult" nillable="true" type="q4:Picture" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_image" type="xs:int" />
+        <xs:element minOccurs="0" name="id_user" type="xs:int" />
+        <xs:element minOccurs="0" name="access_token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteImageResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
