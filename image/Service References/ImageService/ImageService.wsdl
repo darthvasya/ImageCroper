@@ -44,6 +44,24 @@
   <wsdl:message name="IImageService_DeleteImage_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteImageResponse" />
   </wsdl:message>
+  <wsdl:message name="IImageService_CreateAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_CreateAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_AddImageToAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddImageToAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_AddImageToAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddImageToAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_DeleteImageFromAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteImageFromAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IImageService_DeleteImageFromAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteImageFromAlbumResponse" />
+  </wsdl:message>
   <wsdl:portType name="IImageService">
     <wsdl:operation name="UploadImage">
       <wsdl:input wsaw:Action="http://tempuri.org/IImageService/UploadImage" message="tns:IImageService_UploadImage_InputMessage" />
@@ -68,6 +86,18 @@
     <wsdl:operation name="DeleteImage">
       <wsdl:input wsaw:Action="http://tempuri.org/IImageService/DeleteImage" message="tns:IImageService_DeleteImage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IImageService/DeleteImageResponse" message="tns:IImageService_DeleteImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IImageService/CreateAlbum" message="tns:IImageService_CreateAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IImageService/CreateAlbumResponse" message="tns:IImageService_CreateAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddImageToAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IImageService/AddImageToAlbum" message="tns:IImageService_AddImageToAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IImageService/AddImageToAlbumResponse" message="tns:IImageService_AddImageToAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteImageFromAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IImageService/DeleteImageFromAlbum" message="tns:IImageService_DeleteImageFromAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IImageService/DeleteImageFromAlbumResponse" message="tns:IImageService_DeleteImageFromAlbum_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IImageService" type="tns:IImageService">
@@ -119,6 +149,33 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteImage">
       <soap:operation soapAction="http://tempuri.org/IImageService/DeleteImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAlbum">
+      <soap:operation soapAction="http://tempuri.org/IImageService/CreateAlbum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddImageToAlbum">
+      <soap:operation soapAction="http://tempuri.org/IImageService/AddImageToAlbum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteImageFromAlbum">
+      <soap:operation soapAction="http://tempuri.org/IImageService/DeleteImageFromAlbum" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

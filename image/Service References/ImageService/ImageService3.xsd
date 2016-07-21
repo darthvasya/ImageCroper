@@ -14,4 +14,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Picture" nillable="true" type="tns:Picture" />
+  <xs:complexType name="Album">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date_creation" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="date_delete" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="id_owner" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="photos" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Album" nillable="true" type="tns:Album" />
 </xs:schema>

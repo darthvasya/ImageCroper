@@ -98,4 +98,55 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id_user" type="xs:int" />
+        <xs:element minOccurs="0" name="access_token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Network" minOccurs="0" name="CreateAlbumResult" nillable="true" type="q5:Album" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddImageToAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="image" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id_album" type="xs:int" />
+        <xs:element minOccurs="0" name="id_user" type="xs:int" />
+        <xs:element minOccurs="0" name="access_token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddImageToAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Network" minOccurs="0" name="AddImageToAlbumResult" nillable="true" type="q6:Album" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteImageFromAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_image" type="xs:int" />
+        <xs:element minOccurs="0" name="id_album" type="xs:int" />
+        <xs:element minOccurs="0" name="id_user" type="xs:int" />
+        <xs:element minOccurs="0" name="access_token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteImageFromAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteImageFromAlbumResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

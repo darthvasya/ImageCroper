@@ -17,7 +17,7 @@ namespace image
         public Form1()
         {
             InitializeComponent();
-            MessageBox.Show(client.GetImageUrlById(3));
+            delFromAlbum();
         }
         // - сразу грузишь просто картинку
         // - потом уже миниатюру
@@ -160,5 +160,41 @@ namespace image
             bool isDeleted = client.DeleteImage(id_image, id_user, access_token);
             MessageBox.Show(isDeleted.ToString());
         }
+
+        private int id_album = 0;
+        private void CreateAlbum()
+        {
+            ImageService.Album album = client.CreateAlbum("Мойf", id_user, access_token);
+            MessageBox.Show(album.id.ToString());
+            id_album = album.id;
+
+
+        }
+
+        private void AddImageToAlbum(int id_album)
+        {
+            ms = new MemoryStream();
+            file.Save(ms, ImageFormat.Jpeg); // сохраняем в поток памяти, типо в оперативу фотку ложим, в байтах.
+            //bmp.Save(ms, ImageFormat.Jpeg);
+            byte[] arr = ms.ToArray(); // - это массив байтов. В байтах можно что угодно передовать.
+            // c48VT0UCvUmfJL3VkXHB4A - токен доступа для id = 4
+            // NameOfFile - сюда изначальное имя файла. Хотя на серве имя генериться другое
+            // стоит ли в базу писать изначальное имя фотки ??
+            ImageService.Album response = client.AddImageToAlbum(arr, "sda", id_album, id_user, access_token);
+
+            MessageBox.Show(response.photos);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AddImageToAlbum(id_album);
+        }
+
+        private void delFromAlbum()
+        {
+            MessageBox.Show(client.DeleteImageFromAlbum(65, 13, id_user, access_token).ToString());
+        }
+
+ 
     }
 }

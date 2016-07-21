@@ -263,6 +263,147 @@ namespace image.ImageService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Album", Namespace="http://schemas.datacontract.org/2004/07/Network")]
+    [System.SerializableAttribute()]
+    public partial class Album : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime date_creationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> date_deleteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool deletedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int id_ownerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string photosField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime date_creation {
+            get {
+                return this.date_creationField;
+            }
+            set {
+                if ((this.date_creationField.Equals(value) != true)) {
+                    this.date_creationField = value;
+                    this.RaisePropertyChanged("date_creation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> date_delete {
+            get {
+                return this.date_deleteField;
+            }
+            set {
+                if ((this.date_deleteField.Equals(value) != true)) {
+                    this.date_deleteField = value;
+                    this.RaisePropertyChanged("date_delete");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool deleted {
+            get {
+                return this.deletedField;
+            }
+            set {
+                if ((this.deletedField.Equals(value) != true)) {
+                    this.deletedField = value;
+                    this.RaisePropertyChanged("deleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id_owner {
+            get {
+                return this.id_ownerField;
+            }
+            set {
+                if ((this.id_ownerField.Equals(value) != true)) {
+                    this.id_ownerField = value;
+                    this.RaisePropertyChanged("id_owner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string photos {
+            get {
+                return this.photosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.photosField, value) != true)) {
+                    this.photosField = value;
+                    this.RaisePropertyChanged("photos");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ImageService.IImageService")]
     public interface IImageService {
@@ -302,6 +443,24 @@ namespace image.ImageService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/DeleteImage", ReplyAction="http://tempuri.org/IImageService/DeleteImageResponse")]
         System.Threading.Tasks.Task<bool> DeleteImageAsync(int id_image, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/CreateAlbum", ReplyAction="http://tempuri.org/IImageService/CreateAlbumResponse")]
+        image.ImageService.Album CreateAlbum(string name, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/CreateAlbum", ReplyAction="http://tempuri.org/IImageService/CreateAlbumResponse")]
+        System.Threading.Tasks.Task<image.ImageService.Album> CreateAlbumAsync(string name, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/AddImageToAlbum", ReplyAction="http://tempuri.org/IImageService/AddImageToAlbumResponse")]
+        image.ImageService.Album AddImageToAlbum(byte[] image, string name, int id_album, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/AddImageToAlbum", ReplyAction="http://tempuri.org/IImageService/AddImageToAlbumResponse")]
+        System.Threading.Tasks.Task<image.ImageService.Album> AddImageToAlbumAsync(byte[] image, string name, int id_album, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/DeleteImageFromAlbum", ReplyAction="http://tempuri.org/IImageService/DeleteImageFromAlbumResponse")]
+        bool DeleteImageFromAlbum(int id_image, int id_album, int id_user, string access_token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageService/DeleteImageFromAlbum", ReplyAction="http://tempuri.org/IImageService/DeleteImageFromAlbumResponse")]
+        System.Threading.Tasks.Task<bool> DeleteImageFromAlbumAsync(int id_image, int id_album, int id_user, string access_token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -377,6 +536,30 @@ namespace image.ImageService {
         
         public System.Threading.Tasks.Task<bool> DeleteImageAsync(int id_image, int id_user, string access_token) {
             return base.Channel.DeleteImageAsync(id_image, id_user, access_token);
+        }
+        
+        public image.ImageService.Album CreateAlbum(string name, int id_user, string access_token) {
+            return base.Channel.CreateAlbum(name, id_user, access_token);
+        }
+        
+        public System.Threading.Tasks.Task<image.ImageService.Album> CreateAlbumAsync(string name, int id_user, string access_token) {
+            return base.Channel.CreateAlbumAsync(name, id_user, access_token);
+        }
+        
+        public image.ImageService.Album AddImageToAlbum(byte[] image, string name, int id_album, int id_user, string access_token) {
+            return base.Channel.AddImageToAlbum(image, name, id_album, id_user, access_token);
+        }
+        
+        public System.Threading.Tasks.Task<image.ImageService.Album> AddImageToAlbumAsync(byte[] image, string name, int id_album, int id_user, string access_token) {
+            return base.Channel.AddImageToAlbumAsync(image, name, id_album, id_user, access_token);
+        }
+        
+        public bool DeleteImageFromAlbum(int id_image, int id_album, int id_user, string access_token) {
+            return base.Channel.DeleteImageFromAlbum(id_image, id_album, id_user, access_token);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteImageFromAlbumAsync(int id_image, int id_album, int id_user, string access_token) {
+            return base.Channel.DeleteImageFromAlbumAsync(id_image, id_album, id_user, access_token);
         }
     }
 }
